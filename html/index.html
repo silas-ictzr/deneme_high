@@ -83,10 +83,10 @@
             <div class="season_tabs">
     
               <div class="season_tab">
-                  <input type="radio" id="tab-1" name="tab-group-1" checked>
+                  <input  type="radio" id="tab-1" name="tab-group-1" checked>
                   <label for="tab-1">İş1</label>
                   
-                  <div class="season_content">
+                  <div  class="season_content">
                       <span>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Hic voluptatum sunt tenetur quisquam. Molestias doloremque maiores quod optio sit harum sequi vitae impedit. Cum quas, ea distinctio modi dolores aperiam.</span>
                   </div> 
               </div>
@@ -96,7 +96,7 @@
                   <label for="tab-2">İş2</label>
                   
                   <div class="season_content">
-                      <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas, mollitia ipsa, facilis molestiae unde modi impedit officia eius maxime, corporis illo laudantium cupiditate aliquam accusantium voluptatum facere ducimus eligendi cumque?</<span>span>
+                      <span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quas, mollitia ipsa, facilis molestiae unde modi impedit officia eius maxime, corporis illo laudantium cupiditate aliquam accusantium voluptatum facere ducimus eligendi cumque?<span>
                   </div> 
               </div>
                
@@ -308,37 +308,7 @@
                   </div>
                 </form>
               </div>
-              <div class="short-map " style="left: -1490px; height: 100px; opacity: 0.5;">
-                <ul> 
-                  <li id="shortmap1" class="short-map-link">
-                    Temel Bilgiler
-                  </li>
-                  <li id="shortmap2" class="short-map-link">
-                    Eğitim
-                  </li>
-                  <li id="shortmap3" class="short-map-link">
-                    İş Tecrübesi
-                  </li>
-                  <li id="shortmap4" class="short-map-link">
-                    Çalışma Örnekleri
-                  </li>
-                  <li id="shortmap5" class="short-map-link">
-                    Sertifikalar
-                  </li>
-                  <li id="shortmap6" class="short-map-link">
-                    Etiketler
-                  </li>
-                  <li id="shortmap7" class="short-map-link">
-                    Nereden Nereye
-                  </li>
-                  <li id="shortmap8" class="short-map-link">
-                    İletişim Bilgileri
-                  </li>
-                </ul>
-                <div class="short-map-navi ">
-                  <span></span>
-                </div>
-              </div>
+             
         
   
           </div>
@@ -379,16 +349,92 @@
 //form
 //formu temizleme
 
-      document.querySelector('.clear').addEventListener('click', function(){
-        document.querySelector('.form-control').value="";
-      })
+      //document.querySelector('.clear').addEventListener('click', function(){
+        //document.querySelector('.form-control').value="";
+      //})
+
+      document.querySelector('.clear').addEventListener('click', function() {
+        event.preventDefault();
+  var formControls = document.querySelectorAll('.form-control');
+  for (var i = 0; i < formControls.length; i++) {
+    formControls[i].value = "";
+    formControls[i].style.borderColor = "";
+  }
+});
+
 
 //formda girilmeyen yerleri uyarma
-      document.querySelector('.gonder').addEventListener('click',function(){
+      /*document.querySelector('.gonder').addEventListener('click',function(){
+        event.preventDefault();
         if(document.querySelector('.form-control').value==0){
           document.querySelector('.form-control').style.borderColor='red';
         }
-      })
+      })*/
+
+      document.querySelector('.gonder').addEventListener('click', function(event) {
+  event.preventDefault(); // Butona tıklama olayını engelle
+
+  var adSoyad = document.querySelector('#inputEmail4');
+  var telefon = document.querySelector('#inputPassword4');
+  var eposta = document.querySelector('#inputAddress');
+  var mesaj = document.querySelector('#inputAddress2');
+
+  // Input alanlarını kontrol et ve boş olanları işaretle
+  if (adSoyad.value.trim() === '') {
+    adSoyad.style.borderColor = 'red';
+  } else {
+    adSoyad.style.borderColor = '';
+  }
+
+  if (telefon.value.trim() === '') {
+    telefon.style.borderColor = 'red';
+  } else {
+    telefon.style.borderColor = '';
+  }
+
+  if (eposta.value.trim() === '') {
+    eposta.style.borderColor = 'red';
+  } else {
+    eposta.style.borderColor = '';
+  }
+
+  if(mesaj.value.trim() === '') {
+    mesaj.style.borderColor = 'red';
+  } else {
+    mesaj.style.borderColor = ''
+  }
+
+  
+});
+
+
+
+      //gönder butonu
+      /* document.querySelector('.gonder').addEventListener('click', function(event) {
+  event.preventDefault(); // Butona tıklama olayını engelle
+
+  // Form verilerini al
+  var adSoyad = document.querySelector('#inputEmail4').value;
+  var telefon = document.querySelector('#inputPassword4').value;
+  var eposta = document.querySelector('#inputAddress').value;
+  var mesaj = document.querySelector('#inputAddress2').value;
+
+  // AJAX isteği gönder
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'sunucu_url', true); // sunucu_url, e-posta gönderme işlemini gerçekleştiren sunucu tarafı URL'sini temsil etmelidir.
+  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      // İsteğin tamamlanması durumunda burada işlemler yapabilirsiniz.
+      console.log('E-posta gönderildi!');
+      // İşlemlerinizi buraya ekleyin
+    }
+  };
+  xhr.send('adSoyad=' + encodeURIComponent(adSoyad) + '&telefon=' + encodeURIComponent(telefon) + '&eposta=' + encodeURIComponent(eposta) + '&mesaj=' + encodeURIComponent(mesaj));
+});
+*/
+
+
 
 //----------------------------------------------------------------
        /*const shortMapEls = document.querySelectorAll('.short-map');
